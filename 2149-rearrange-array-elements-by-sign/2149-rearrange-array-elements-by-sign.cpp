@@ -15,12 +15,10 @@ public:
         for(int i = 0 ;i<n ;i=i+2){
             nums[i]=a[j++];
         }
-        a.clear();
         j=0;
         for(int i=1;i<n;i=i+2){
             nums[i]=b[j++];
         }
-        b.clear();
         return nums;
 
 
