@@ -15,21 +15,14 @@ public:
         if(root==NULL){
             return 0;
         }
-        int lh;
-        if(root->left){
-            lh = find(root->left);
-        }
-        else{
+        if(!root->left){
             return 1+find(root->right);
         }
-        int rh;
-        if(root->right)
-            rh = find(root->right);
-        else{
+        if(!root->right){
             return 1+find(root->left);
         }
-
-        return 1+min(lh,rh);
+        
+        return 1+min(find(root->left),find(root->right));
     }
     int minDepth(TreeNode* root) {
         int height = find(root);
