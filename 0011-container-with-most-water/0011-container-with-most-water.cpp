@@ -2,20 +2,20 @@ class Solution {
 public:
     int maxArea(vector<int>& arr) {
         int n = arr.size();
-        int left =0;
+        int left = 0;
         int right = n-1;
-        int area = 0;
-        while(left<right){
-            int plotarea=0;
+        int area =0;
+        int maxi =0;
+        while(right>left){
             if(arr[left]>arr[right]){
-                plotarea = arr[right]*(right-left);
+                area = arr[right]  * (right - left);
                 right--;
             }else{
-                plotarea = arr[left]*(right-left);
+                area = arr[left] * (right - left);
                 left++;
             }
-            area = max(area,plotarea);
+            maxi = max(maxi,area);
         }
-        return area;
+        return maxi;
     }
 };
