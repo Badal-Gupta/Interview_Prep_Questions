@@ -1,24 +1,22 @@
 class Solution {
 public:
-    int trap(vector<int>& arr) {
-        int n = arr.size();
-        int left_max = arr[0];
-        int right_max = arr[n-1];
-        int left = 0;
-        int right = n-1;
-        int area = 0;
-        while(left<=right){
-            if(left_max<right_max){
-                left_max = max(left_max, arr[left]);
-                area = area + (left_max -arr[left]); 
-                left++; 
-            }else{
-                right_max = max(right_max , arr[right]);
-                area = area + (right_max - arr[right]);
-                right--;
+    int trap(vector<int>& height) {
+        int n = height.size();
+        stack<int>st;
+        int result = 0;
+        for(int i =0;i<n;i++){
+            while(!st.empty()&& height[i]>height[st.top()]){
+                int top = st.top();
+                st.pop();
+                if(st.empty()){
+                    break;
+                }
+                int distance = i - st.top() -1;
+                int width = min(height[i],height[st.top()]) - height[top];
+                result+= (distance * width);
             }
+            st.push(i);
         }
-        return area;
-
+        return result;
     }
 };
