@@ -15,6 +15,7 @@ public:
                     i++;
                 }
                 count++;
+                if (count > d) break;
             }
             if (count <= d) {
                 high = mid - 1;
