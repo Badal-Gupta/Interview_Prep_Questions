@@ -4,7 +4,6 @@ public:
         int n = nums.size();
         int low = *max_element(nums.begin(), nums.end());
         int high = accumulate(nums.begin(), nums.end(), 0);
-        int ans = low;
         while (low <= high) {
             int mid = (low + high) / 2;
             int count = 0;
