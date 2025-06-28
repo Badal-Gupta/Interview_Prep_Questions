@@ -9,7 +9,7 @@ public:
             int count = 0;
             int i = 0;
             while (i < n) {
-                long long cost = 0;
+                int cost = 0;
                 while (i < n && cost + nums[i] <= mid) {
                     cost += nums[i];
                     i++;
