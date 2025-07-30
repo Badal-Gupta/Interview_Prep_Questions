@@ -8,4 +8,4 @@ FROM (
     GROUP BY customer_id, product_key
 ) as a
 GROUP BY customer_id
-HAVING COUNT(*) = (SELECT COUNT(*) FROM Product);
+HAVING COUNT(*) = (SELECT COUNT(*) FROM Product as p);
