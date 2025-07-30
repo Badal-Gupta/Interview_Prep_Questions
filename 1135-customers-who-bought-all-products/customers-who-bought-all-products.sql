@@ -6,6 +6,6 @@ FROM (
     SELECT customer_id, product_key
     FROM Customer
     GROUP BY customer_id, product_key
-) AS grouped_pairs
+) a
 GROUP BY customer_id
 HAVING COUNT(*) = (SELECT COUNT(*) FROM Product);
