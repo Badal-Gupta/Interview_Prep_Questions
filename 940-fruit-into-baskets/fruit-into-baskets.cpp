@@ -25,8 +25,7 @@ public:
                             mp.erase(arr[s]);
                         }
                         s++;
-                        count--;
-                        
+                        count--;               
                     }
                     if(count>max)max=count;
                 }
