@@ -8,10 +8,9 @@ public:
         sort(arr.begin(),arr.end());
         while(low<=high){
             int mid = (low+high)/2;
-            int cnt=0;
-            for(int i = 0;i<n;i++){
-                if(arr[i]>=mid)cnt++;
-            }
+            // int cnt=0;
+            auto it = lower_bound(arr.begin(), arr.end(), mid);
+        int cnt = arr.end() - it;
             if(cnt>=mid){
                 ans = mid;
                 low = mid+1;
