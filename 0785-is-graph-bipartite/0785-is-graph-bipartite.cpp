@@ -1,37 +1,27 @@
 class Solution {
 public:
-    bool check(int i, vector<int>&vis,vector<vector<int>>&graph){
-        queue<int>q;
-        q.push(i);
-        vis[i]=0;
-        while(!q.empty()){
-            int node = q.front();
-            q.pop();
-            for(auto it : graph[node]){
-                if(vis[it]==-1){
-                    if(vis[node]==0){
-                        vis[it]=1;
-                        q.push(it);
-                    }else{
-                        vis[it]=0;
-                        q.push(it);
-                    }
-                }else{
-                    if(vis[node]==vis[it]){
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
-        vector<int>vis(n,-1);
-        for(int i=0;i<n;i++){
-            if(vis[i]==-1){
-                if(check(i,vis,graph)==false){
-                    return false;
+        vector<int> color(n, -1);
+        queue<int> q;
+        
+        for (int i = 0; i < n; i++) {
+            if (color[i] == -1) { // Unvisited node
+                color[i] = 0;
+                q.push(i);
+                
+                while (!q.empty()) {
+                    int node = q.front();
+                    q.pop();
+                    
+                    for (int nei : graph[node]) {
+                        if (color[nei] == -1) {
+                            color[nei] = 1 - color[node]; // Alternate color
+                            q.push(nei); // Push neighbor's index
+                        } else if (color[nei] == color[node]) {
+                            return false; // Conflict → Not bipartite
+                        }
+                    }
                 }
             }
         }
