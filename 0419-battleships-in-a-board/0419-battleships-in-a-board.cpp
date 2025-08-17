@@ -16,7 +16,6 @@ public:
         int n = board.size();
         int m = board[0].size();
 
-        // vector<vector<bool>>vis(n,vector<bool>(m,false));
         int count =0;
         for(int i=0;i<n;i++){
             for(int j = 0;j<m;j++){
