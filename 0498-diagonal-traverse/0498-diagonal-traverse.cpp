@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
-        int m = mat.size();
-        int n = mat[0].size();
+        int n = mat.size();
+        int m = mat[0].size();
         vector<int>result;
         int count = 0;
         for(int i=0;i<n;i++){
@@ -10,7 +10,7 @@ public:
             int a = i;
             count++;
             vector<int>b;
-            while(j<=i && a>=0){
+            while(j<=i && a>=0 && j<m){
                 b.push_back(mat[a][j]);
                 j++;
                 a--;  
