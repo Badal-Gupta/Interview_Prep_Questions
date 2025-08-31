@@ -1,14 +1,14 @@
 class Solution {
 public:
-    bool sudoku(vector<vector<char>>&board){
-        for(int i =0;i<board.size();i++){
-            for(int j=0;j<board[0].size();j++){
+    bool solve(vector<vector<char>>& board){
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
                 if(board[i][j]=='.'){
-                    for(char c ='1' ; c<='9' ; c++){
-                        if(Chalega(board,i,j,c)){
-                            board[i][j]=c;
+                    for(char a = '1';a<='9';a++){
+                        if(valid(board,i,j,a)){
+                            board[i][j]=a;
 
-                            if(sudoku(board)==true){
+                            if(solve(board)==true){
                                 return true;
                             }else{
                                 board[i][j]='.';
@@ -21,22 +21,21 @@ public:
         }
         return true;
     }
-
-    bool Chalega(vector<vector<char>>&board , int row ,int col , char c){
-        for(int i = 0 ;i<9 ; i++ ){
-            if(board[row][i]==c){
+    bool valid(vector<vector<char>>& board,int row , int col,int value){
+        for(int i=0;i<9;i++){
+            if(board[row][i]==value){
                 return false;
             }
-            if(board[i][col]==c){
+            if(board[i][col]==value){
                 return false;
             }
-            if(board[3*(row/3) + i/3][3*(col/3) + i%3]==c){
+            if(board[3*(row/3)+i/3][3*(col/3)+i%3]==value){
                 return false;
             }
         }
         return true;
     }
     void solveSudoku(vector<vector<char>>& board) {
-        sudoku(board);
+        solve(board);
     }
 };
