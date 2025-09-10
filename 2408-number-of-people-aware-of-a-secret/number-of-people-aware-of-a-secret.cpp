@@ -22,7 +22,5 @@ public:
         }
 
         return people;
-
-
     }
 };
