@@ -9,7 +9,8 @@ public:
             mp[ch]++;
         }
         int vowel = 0, consonant = 0;
-        for (char ch = 'a'; ch <= 'z'; ch++) {
+        for (char ch = 'a'; ch <= 'z'; ch++) 
+        {
             if (is_vowel(ch)) {
                 vowel = max(vowel, mp[ch]);
             } else {
