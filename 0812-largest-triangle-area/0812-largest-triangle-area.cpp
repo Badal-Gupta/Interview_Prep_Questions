@@ -1,25 +1,18 @@
 class Solution {
 public:
     double largestTriangleArea(vector<vector<int>>& points) {
-        int maxarea = 0;
-    for (int i=0; i<points.size()-2 ; i++){
-        for (int j=i+1; j<points.size()-1 ; j++){
-            for (int k=j+1; k<points.size() ; k++){
-                int x1,y1,x2,y2;
-                x1 = points[i][0] - points[j][0];
-                y1 = points[i][1] - points[j][1];
-                x2 = points[i][0] - points[k][0];
-                y2 = points[i][1] - points[k][1];
-                int area = x1*y2 - x2*y1; // rectangle area, triangle is half
-                if (area < 0){
-                    area = -area;
-                if (area > maxarea){
-                    maxarea = area;
-                }
-            }
-        }
-        }
+        
+    int N = points.size();
+        double ans = 0;
+        for (int i = 0; i < N; ++i)
+            for (int j = i+1; j < N; ++j)
+                for (int k = j+1; k < N; ++k)
+                    ans = max(ans, area(points[i], points[j], points[k]));
+        return ans;
     }
-        return maxarea/2.0; // triangle area is half
+
+    double area(vector<int>P, vector<int> Q, vector<int> R) {
+        return 0.5 * abs(P[0]*Q[1] + Q[0]*R[1] + R[0]*P[1]
+                             -P[1]*Q[0] - Q[1]*R[0] - R[1]*P[0]);
     }
 };
